@@ -1,3 +1,8 @@
+:root {
+  --color100: rgba(56, 56, 56, 0.5);
+  --transwhite: rgba(255, 255, 255, 0);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,31 +13,158 @@ body {
 
 }
 
+#root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: 1100px;
+  padding-top: 10px;
+  background: linear-gradient(var(--color100), var(--transwhite) 50%, var(--color100)),
+              linear-gradient(45deg, var(--color100), var(--transwhite) 50%, var(--color100)),
+              linear-gradient(-45deg, var(--color100), var(--transwhite) 50%, var(--color100)),
+              linear-gradient(90deg, var(--color100), var(--transwhite) 50%, var(--color100));
+  min-height: 100vh;
+}
+
+#canvas-wrap {
+  height: 600px;
+  position: relative;
+  padding: 50px;
+  background-image: url("./frame.png");
+  box-sizing: border-box;
+}
+
+#frame {
+  position: absolute;
+  width: 900px;
+  top: 0;
+  left: 0;
+  height: 600px;
+  margin: 0;
+}
+
 #can {
-  background-color: rgb(119, 119, 119);
+  background:  linear-gradient(rgba(172, 187, 255, 0.5) 80%,rgb(145, 70, 0)), linear-gradient(-45deg, rgb(172, 187, 255), rgb(252, 252, 110));
 }
 
 #controllers {
-  display: flex;
+  position: relative;
+  height: 580px;
+  margin-left: 20px;
+  display: block;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 150px;
+  text-align: center;
 }
 
-#controllers div{
+#controllers div, #controllers h1{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin: 5px;
+}
+
+#controllers h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#controllers div input{
+  margin: 5px 0;
+}
+
+input[type="number"] {
+  width: 35px;
+}
+
+#controllers .radio-wrap {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#controllers #anim-buttons{
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-#controllers div input{
-  margin: 5px;
+#controllers #anim-buttons button{
+  cursor: pointer;
+  color: white;
+  border: 2px solid rgb(0, 170, 0);
+  background-color: rgb(0, 170, 0);
+  margin: 3px;
+  padding: 2px 5px;
+  border-radius: 2px;
+  outline: none;
 }
 
-#controllers .radio-wrap {
-  justify-content: start;
-  align-items: flex-start;
+#controllers #anim-buttons button:hover{
+  border: 2px solid white;
+
+}
+
+#controllers .radio-wrap .radio-select{
+  text-align: left;
 }
 
 #controllers div div{
   display: block;
 }
+
+#controllers #opt-info{
+  position: absolute;
+  text-align: center;
+  display: block;
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 0 3px;
+  bottom: 0;
+}
+
+
+@media only screen and (max-width: 1100px) {
+  #root {
+    min-width: 900px;
+    flex-direction: column;
+  }
+  #controllers {
+    margin: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 850px;
+    height: 200px;
+  }
+  #controllers h1 {
+    width: 100%;
+  }
+  #controllers div {
+    margin: 5px 10px;
+  }
+  #controllers .radio-wrap {
+    display: block;
+  }
+  #controllers .radio-wrap .radio-select{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+  }
+  #controllers .radio-wrap .radio-select div{
+    margin-top: 0;
+  }
+  #controllers #opt-info{
+    right: 0;
+  }
+  
+
+}
+
 
